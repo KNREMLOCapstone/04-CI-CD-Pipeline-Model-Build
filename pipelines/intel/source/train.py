@@ -33,6 +33,9 @@ from pytorch_lightning.callbacks import TQDMProgressBar
 from pytorch_lightning.plugins.environments import LightningEnvironment
 from torch.utils.data import DataLoader, Dataset
 from torchmetrics import Accuracy
+from torchmetrics import Precision
+from torchmetrics import Recall
+from torchmetrics import ConfusionMatrix
 from torchvision.datasets import ImageFolder
 
 
@@ -48,7 +51,10 @@ dvc_repo_url = os.environ.get("DVC_REPO_URL")
 dvc_branch = os.environ.get("DVC_BRANCH")
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-accuracy = Accuracy(task="multiclass", num_classes=6)
+accuracy = Accuracy(task="multiclass", num_classes=6).to(device)
+precision=Precision(task='multiclass',average='macro',num_classes=6).to(device)
+recall = Recall(task="multiclass", average='macro', num_classes=6).to(device)
+confmat = ConfusionMatrix(task="multiclass", num_classes=6).to(device)
 
 
 def get_training_env():
