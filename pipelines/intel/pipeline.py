@@ -162,7 +162,7 @@ def get_pipeline(
         role = sagemaker.session.get_execution_role(sagemaker_session)
 
     pipeline_session = get_pipeline_session(region, default_bucket)
-    #
+    
     # [START] intel pipeline
     
     dvc_repo_url = ParameterString(
@@ -257,11 +257,10 @@ def get_pipeline(
         py_version="py38",
         framework_version="1.11.0",
         instance_count=1,
-        #instance_type="ml.m5.4xlarge",
-        instance_type="ml.g4dn.xlarge",
+        instance_type="ml.m5.4xlarge",
         tensorboard_output_config=tensorboard_output_config,
-        #use_spot_instances=True,
-        #max_wait=10000,
+        use_spot_instances=True,
+        max_wait=10000,
         max_run=5000,
         environment={
             "DVC_REPO_URL": dvc_repo_url,

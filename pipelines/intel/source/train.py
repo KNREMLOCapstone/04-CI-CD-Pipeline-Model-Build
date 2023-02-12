@@ -49,12 +49,11 @@ git_path = ml_root / "sagemaker-intelimage"
 
 dvc_repo_url = os.environ.get("DVC_REPO_URL")
 dvc_branch = os.environ.get("DVC_BRANCH")
-
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-accuracy = Accuracy(task="multiclass", num_classes=6).to(device)
-precision=Precision(task='multiclass',average='macro',num_classes=6).to(device)
-recall = Recall(task="multiclass", average='macro', num_classes=6).to(device)
-confmat = ConfusionMatrix(task="multiclass", num_classes=6).to(device)
+accuracy = Accuracy(task="multiclass", num_classes=6)
+precision=Precision(task='multiclass',average='macro',num_classes=6)
+recall = Recall(task="multiclass", average='macro', num_classes=6)
+confmat = ConfusionMatrix(task="multiclass", num_classes=6)
 
 
 def get_training_env():
@@ -65,7 +64,7 @@ def get_training_env():
 
 
 class LitResnet(pl.LightningModule):
-    def __init__(self, num_classes=10, lr=0.0476321232531695):
+    def __init__(self, num_classes=6, lr=0.0476321232531695):
         super().__init__()
 
         self.save_hyperparameters()
