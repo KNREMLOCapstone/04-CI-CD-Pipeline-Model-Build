@@ -260,7 +260,7 @@ def get_pipeline(
         #instance_type="ml.m5.4xlarge",
         instance_type="ml.g4dn.xlarge",
         tensorboard_output_config=tensorboard_output_config,
-        use_spot_instances=True,
+        #use_spot_instances=True,
         max_wait=10000,
         max_run=5000,
         environment={
