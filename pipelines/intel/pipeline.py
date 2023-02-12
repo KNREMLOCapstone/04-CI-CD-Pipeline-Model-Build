@@ -162,7 +162,7 @@ def get_pipeline(
         role = sagemaker.session.get_execution_role(sagemaker_session)
 
     pipeline_session = get_pipeline_session(region, default_bucket)
-    
+    #
     # [START] intel pipeline
     
     dvc_repo_url = ParameterString(
