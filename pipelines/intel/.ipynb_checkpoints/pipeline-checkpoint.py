@@ -261,7 +261,7 @@ def get_pipeline(
         instance_type="ml.g4dn.xlarge",
         tensorboard_output_config=tensorboard_output_config,
         #use_spot_instances=True,
-        max_wait=10000,
+        #max_wait=10000,
         max_run=5000,
         environment={
             "DVC_REPO_URL": dvc_repo_url,
